@@ -5,7 +5,7 @@
 {% block content %}
     <div class="category_delete">
         Уверены, что хотите {% if object.is_active %}удалить{% else %}восстановить{% endif %}  категорию <strong>{{ object.name }}</strong>?
-        <form action="{% url 'admin:category_delete' object.pk %}" method="post">
+        <form action="{% url 'admin_stuff:category_delete' object.pk %}" method="post">
             {% csrf_token %}
             {% if object.is_active %}
             <input class="btn btn-danger" type="submit" value="удалить">
@@ -14,7 +14,7 @@
             {% endif %}
         </form>
         <button class="btn btn-success">
-            <a href="{% url 'admin:categories' %}">отмена</a>
+            <a href="{% url 'admin_stuff:categories' %}">отмена</a>
         </button>
     </div>
 {% endblock %}

@@ -31,7 +31,14 @@
             {% endif %}
             {% if user.is_superuser %}
                 <li>
-                    <a href="{% url 'admin:users' %}">
+                    <a href="{% url 'admin_stuff:users' %}">
+                        Менеджер
+                    </a>
+                </li>
+            {% endif %}
+            {% if user.is_superuser %}
+                <li>
+                    <a href="/admin/">
                         Админка
                     </a>
                 </li>
