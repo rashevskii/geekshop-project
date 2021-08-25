@@ -15,6 +15,7 @@ class OrderForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
 
 class OrderItemForm(forms.ModelForm):
+    price = forms.CharField(label='цена', required=False)
     class Meta:
         model = OrderItem
         exclude = ()

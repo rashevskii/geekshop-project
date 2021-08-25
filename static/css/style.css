@@ -448,9 +448,10 @@ html, body {
 
 .basket_list .basket_record {
     position: relative;
-    display: block;
+    display: flex;
     height: 170px;
     float: none;
+    margin-bottom: 20px;
 }
 
 .basket_container .head {
