@@ -17,21 +17,21 @@
             <p>{% if object.is_active %}да{% else %}нет{% endif %}</p>
             <p>
                 <button>
-                    <a href={% url 'admin:products_update' object.pk %}>редактировать</a>
+                    <a href={% url 'admin_stuff:products_update' object.pk %}>редактировать</a>
                 </button>
             </p>
             <p>
                 <button>
                     {% if object.is_active %}
-                    <a href={% url 'admin:product_delete' object.pk %}>удалить</a>
+                    <a href={% url 'admin_stuff:product_delete' object.pk %}>удалить</a>
                     {% else %}
-                    <a href={% url 'admin:product_delete' object.pk %}>восстановить</a>
+                    <a href={% url 'admin_stuff:product_delete' object.pk %}>восстановить</a>
                     {% endif %}
                 </button>
             </p>
             <p>
                 <button>
-                    <a href={% url 'admin:products' object.category.pk %}>назад</a>
+                    <a href={% url 'admin_stuff:products' object.category.pk %}>назад</a>
                 </button>
             </p>
         </div>

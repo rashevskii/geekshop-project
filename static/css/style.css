@@ -394,7 +394,7 @@ html, body {
 }
 
 .admin_menu ul.menu{
-    display: block;
+    display: flex;
     float: none;
     width: 550px;
     height: 50px;
@@ -668,9 +668,9 @@ html, body {
 	list-style-type: none;
 	margin-top: 67px;
 	float: right;
-}
-.menu li {
-	float: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .menu a {
 	color: #8c8c8c;
@@ -696,7 +696,12 @@ html, body {
 	font-weight: 700;
 	border-bottom: 3px solid #212121;
 }
-
+.dropdown-menu li a {
+    width: 100%;
+    display: block;
+    text-align: left;
+    border-bottom: 3px solid transparent;
+}
 .search {
 	display: block;
 	width: 23px;
@@ -704,7 +709,6 @@ html, body {
 	background-image: url(/static/img/search.png);
 	position: absolute;
 	top: 63px;
-	/*left: 1176px;*/
 	left: 1151px;
 }
 .basket {
@@ -714,7 +718,6 @@ html, body {
 	background-image: url(/static/img/basket.png);
 	position: absolute;
 	top: 63px;
-	/*left: 1210px;*/
 	left: 1185px;
     text-decoration: none;
     color: #555;
