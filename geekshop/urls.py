@@ -12,9 +12,11 @@ urlpatterns = [
     path('contact/', mainapp.contact, name='contact'),
     path('auth/', include('authapp.urls', namespace='auth')),
     path('basket/', include('basketapp.urls', namespace='basket')),
-    path('admin/', include('adminapp.urls', namespace='admin')),
+    path('admin_stuff/', include('adminapp.urls', namespace='admin_stuff')),
+    path('orders/', include('ordersapp.urls', namespace='orders')),
+    path('', include('social_django.urls', namespace='social')),
 
-    path('adminstandart/', admin.site.urls),
+    path('admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
