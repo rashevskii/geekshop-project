@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'basketapp',
     'adminapp',
     'social_django',
-    'ordersapp',
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -113,12 +112,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'geekshop',
-    #     'USER': 'postger',
-    # }
 }
 
 
@@ -191,17 +184,3 @@ SOCIAL_AUTH_VK_OAUTH2_KEY = env('SOCIAL_AUTH_VK_OAUTH2_KEY')
 SOCIAL_AUTH_VK_OAUTH2_SECRET = env('SOCIAL_AUTH_VK_OAUTH2_SECRET')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-if os.name == 'posix':
-   CACHE_MIDDLEWARE_ALIAS = 'default'
-   CACHE_MIDDLEWARE_SECONDS = 120
-   CACHE_MIDDLEWARE_KEY_PREFIX = 'geekshop'
-
-   CACHES = {
-       'default': {
-           'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-           'LOCATION': '127.0.0.1:11211',
-       }
-   }
-
-LOW_CACHE = True
