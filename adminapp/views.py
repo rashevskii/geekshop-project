@@ -1,5 +1,8 @@
 from django.contrib.auth.decorators import user_passes_test
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db import connection
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
@@ -284,7 +287,6 @@ def products(request, pk, page=1):
     # except EmptyPage:
     #     products_paginator = paginator.page(paginator.num_pages)
 
-
     context = {
         'title': title,
         'objects': products_list,
@@ -329,3 +331,20 @@ def products_delete(request, pk):
         "product_to_delete": product
     }
     return render(request, "adminapp/product_delete.html", context)
+
+
+def db_profile_by_type(prefix, type, queries):
+    update_queries = list(filter(lambda x: type in x['sql'], queries))
+    print(f'db_profile {type} for {prefix}:')
+    [print(query['sql']) for query in update_queries]
+
+
+@receiver(pre_save, sender=ProductCategory)
+def product_is_active_update_productcategory_save(sender, instance, **kwargs):
+    if instance.pk:
+        if instance.is_active:
+            instance.product_set.update(is_active=True)
+        else:
+            instance.product_set.update(is_active=False)
+
+        db_profile_by_type(sender, 'UPDATE', connection.queries)
